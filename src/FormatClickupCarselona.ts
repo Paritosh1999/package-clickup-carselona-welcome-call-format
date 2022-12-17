@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export class FormatClickupCarselona {
     static async formatSubscriptionForWelcomeCall(inputdata:any) {
+        console.log("moin",inputdata)
         const custom_fields:any =[];
         const input_custom_field_array = Object.keys(inputdata.custom);
         console.log(input_custom_field_array)
