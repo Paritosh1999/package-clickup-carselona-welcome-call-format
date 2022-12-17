@@ -4,13 +4,14 @@ export class FormatClickupCarselona {
     static async formatSubscriptionForWelcomeCall(inputdata:any) {
         const custom_fields:any =[];
         const input_custom_field_array = Object.keys(inputdata.custom);
+        console.log(input_custom_field_array)
         const custom_field_len = input_custom_field_array.length;
-        console.log("id is============",input_custom_field_array[0] );
-        console.log("value is====================",inputdata.custom[input_custom_field_array[0]] )
+        console.log(input_custom_field_array[0] );
+        console.log(inputdata.custom[input_custom_field_array[0]] )
         for( var i = 0; i < custom_field_len; i++){
             var field:any ={
-                'id':input_custom_field_array[i],//
-                'value': inputdata.custom[input_custom_field_array[i]]
+                'value':input_custom_field_array[i],//
+                'id': inputdata.custom[input_custom_field_array[i]]
             }
             custom_fields.push(field);
         }
