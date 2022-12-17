@@ -15,7 +15,8 @@ export class FormatClickupCarselona {
             }
             custom_fields.push(field);
         }
-       
+        console.log("custom fields array is: ===================== ");
+        console.log(custom_fields);
         const data: any = {
           name: inputdata.name,
           description: inputdata.description,
