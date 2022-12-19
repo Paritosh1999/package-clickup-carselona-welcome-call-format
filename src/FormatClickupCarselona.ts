@@ -11,8 +11,9 @@ export class FormatClickupCarselona {
         console.log(inputdata.custom[input_custom_field_array[0]] )
         for( var i = 0; i < custom_field_len; i++){
             var field:any ={
-                'value':input_custom_field_array[i],//
-                'id': inputdata.custom[input_custom_field_array[i]]
+                'id': inputdata.custom[input_custom_field_array[i]],
+                'value':input_custom_field_array[i]//
+                
             }
             custom_fields.push(field);
         }
