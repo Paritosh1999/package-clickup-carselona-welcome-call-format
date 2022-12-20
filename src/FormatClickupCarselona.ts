@@ -1,42 +1,39 @@
 import axios from 'axios'
 
 export class FormatClickupCarselona {
-    static async formatSubscriptionForWelcomeCall(inputdata:any) {
-        console.log("moin",inputdata)
-        const custom_fields:any =[];
+    static  formatSubscriptionForWelcomeCall(inputdata:any) {
+        
+        const custom_fields =[];
         const input_custom_field_array = Object.keys(inputdata.custom);
-        console.log(input_custom_field_array)
         const custom_field_len = input_custom_field_array.length;
-        console.log(input_custom_field_array[0] );
-        console.log(inputdata.custom[input_custom_field_array[0]] )
-        for( var i = 0; i < custom_field_len; i++){
+       for( var i = 0; i < custom_field_len; i++){
             var field:any ={
                 'id': inputdata.custom[input_custom_field_array[i]],
-                'value':input_custom_field_array[i]//
-                
+                'value':input_custom_field_array[i]
             }
             custom_fields.push(field);
         }
-        console.log("custom fields array is: ===================== ");
-        console.log(custom_fields);
         const data: any = {
-          name: inputdata.name,
-          description: inputdata.description,
-          parent: null,
-          // "links_to": null,
-          check_required_custom_fields: true,
-          custom_fields: JSON.stringify(custom_fields)
+          "name": inputdata.name,
+          "description": inputdata.description,
+          "check_required_custom_fields": true,
+          "assignees": [
+            183
+           ],
+          "tags": [
+            "tag name 1"
+           ],
+        // "status": "Open",
+           "priority": 3,
+           "custom_fields": custom_fields
         };
+        console.log("Inside formatcarselona========================================");
         console.log(data);
-        // data = this.taskKeys
        
-        
-        
-    
-        return data;
+       return data;
     }
 
-    static async formatDataForParentTask(data: any, deletedataarray: any) {
+    static  formatDataForParentTask(data: any, deletedataarray: any) {
         
         for( let i = 0; i < deletedataarray.length; i++){
             delete data.custom_fields[deletedataarray[i]];

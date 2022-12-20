@@ -3,12 +3,9 @@ import axios from 'axios'
 export class TasksClickupCarselona {
 
     static async createTask(list_id:any, data: any, event_name: any, apikey:any){
-        // let apiReport:any = {
-        //     external_api_name: 'clickup_create_task',
-        //     event_name: event_name,
-        //     trigger_datetime: new Date().toISOString(),
-        //     request_data: JSON.stringify({ list_id, data }),
-        // }
+        
+        console.log("create task started, calling axios")
+
         let response = await axios.post(`https://api.clickup.com/api/v2/list/${list_id}/task`,
             data,
             {
@@ -17,6 +14,7 @@ export class TasksClickupCarselona {
                 }
             }).then(async (response) => {
                 //apiReport['status_code'] = response.status
+                console.log("inside createtask==================",response.data)
                 return response.data;
 
             }).catch(async (error) => {
@@ -25,13 +23,14 @@ export class TasksClickupCarselona {
                     // apiReport['response_data'] = JSON.stringify(error.response.data)
                     //await Model.ExternalApiTracking.create(apiReport)
                 }
+                //console.log("inside ctach================", error.response)
                 return error.response;
             });
 
-
+        //console.log("inside create task========================",response)
         return response
     }
-
+    
     static async getTasks(list_id: any, apikey:any) {
         let response = await axios.get(`https://api.clickup.com/api/v2/list/${list_id}/task?subtasks=true`,
             {
@@ -370,8 +369,6 @@ export class TasksClickupCarselona {
         }
     }
    
-   
-   
     static async getLists(folder_id: any, apikey:any ) {
         let response = await axios.get(`https://api.clickup.com/api/v2/folder/${folder_id}/list`,
             {
@@ -404,10 +401,6 @@ export class TasksClickupCarselona {
             return false
         }
     }
-
-    
-
-    
 
     static async getListById(list_id: any, apikey: any) {
         let response = await axios.get(`https://api.clickup.com/api/v2/list/${list_id}`,
